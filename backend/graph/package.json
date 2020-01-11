@@ -1,0 +1,24 @@
+{
+  "name": "graph",
+  "version": "0.0.0",
+  "main": "src/index.js",
+  "author": "Carlos Neves",
+  "license": "MIT",
+  "private": false,
+  "scripts": {
+    "_install": "./scripts/install.bash",
+    "start": "./scripts/start.bash",
+    "kill": "./scripts/kill.bash",
+    "restart": "./scripts/restart.bash",
+    "logs": "./scripts/logs.bash"
+  },
+  "dependencies": {
+    "body-parser-graphql": "^1.1.0",
+    "express": "^4.17.1",
+    "graphql": "^14.5.8"
+  },
+  "devDependencies": {
+    "chokidar": "^3.3.1",
+    "execa": "^4.0.0"
+  }
+}

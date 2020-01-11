@@ -1,0 +1,18 @@
+schema {
+  query: Query
+  # mutation: Mutation
+}
+
+type Query {
+  # viewer(): User
+  # signIn(usernameOrEmail: String!, password: String!): User
+  foo: String!
+  # getItem(hash: String!, sort: String!): String!
+}
+
+# type Mutation {
+#   createDeck(name: String!):Boolean!
+#   #signUp: User
+# }
+
+# type User {}
