@@ -1,5 +1,5 @@
-CREATE USER enfase;
 CREATE DATABASE enfase;
+CREATE USER enfase WITH ENCRYPTED PASSWORD '654321';
 GRANT ALL PRIVILEGES ON DATABASE enfase TO enfase;
 
 \connect enfase
@@ -15,7 +15,8 @@ CREATE TABLE choice(
   question_id INTEGER NOT NULL,
   index INTEGER NOT NULL,
   _text VARCHAR(1024) NOT NULL,
-  PRIMARY KEY(question_id, index)
+  PRIMARY KEY(question_id, index),
+  UNIQUE(question_id, _text)
 );
 GRANT ALL PRIVILEGES ON choice TO enfase;
 

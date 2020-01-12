@@ -8,6 +8,6 @@ package_root="$repository_root/$PACKAGE_ID"
 
 cd "$package_root"
 
-source scripts/kill.bash || true
+bash scripts/kill.bash
 
-source scripts/start.bash
+bash scripts/start.bash

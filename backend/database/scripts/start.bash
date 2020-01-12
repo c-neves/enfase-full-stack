@@ -16,7 +16,6 @@ image='postgres:12.1-alpine'
     --name "$container_name" \
     --env POSTGRES_PASSWORD=123456 \
     --workdir "/$package_name" \
-    --publish 8000:5432 \
     --rm \
     --detach \
     "$image")

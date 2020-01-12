@@ -16,7 +16,8 @@
   "dependencies": {
     "body-parser-graphql": "^1.1.0",
     "express": "^4.17.1",
-    "graphql": "^14.5.8"
+    "graphql": "^14.5.8",
+    "pg": "^7.17.1"
   },
   "devDependencies": {
     "chokidar": "^3.3.1",

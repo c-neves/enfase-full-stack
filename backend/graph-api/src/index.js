@@ -2,7 +2,7 @@ const express = require('express')
 const bodyParser = require('body-parser-graphql')
 const { graphql } = require('graphql')
 const { schema, root } = require('./graphql')
-// const database = require('./database')
+const database = require('./database')
 
 const port = 4000
 const host = '0.0.0.0'
@@ -10,7 +10,11 @@ const app = express()
 
 app.use(bodyParser.graphql())
 
-app.get('/', (req, res) => res.send('hey'))
+app.get('/', async (req, res) => {
+
+  const _res = await database.query('SELECT * from choice')
+  res.send(_res)
+})
 
 app.post('/', async (req, res) => {
   try {
@@ -19,7 +23,7 @@ app.post('/', async (req, res) => {
       rootValue: root,
       source: req.body.query,
       variableValues: req.body.variables,
-      // contextValue: { database }
+      contextValue: { database }
     })
 
     res.status(200).send(response)

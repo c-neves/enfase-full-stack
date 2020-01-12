@@ -10,4 +10,4 @@ container_name="$(echo "$package_name" | sed 's|/|_|g')"
 
 
 (echo; set -o xtrace
-  docker kill "$container_name")
+  docker kill "$container_name" || true)
