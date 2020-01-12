@@ -1,0 +1,16 @@
+{
+  "name": "database",
+  "version": "0.0.0",
+  "author": "Carlos Neves",
+  "license": "MIT",
+  "private": false,
+  "scripts": {
+    "start": "./scripts/start.bash",
+    "kill": "./scripts/kill.bash",
+    "restart": "./scripts/restart.bash",
+    "logs": "./scripts/logs.bash",
+    "shell": "./scripts/shell.bash",
+    "psql": "./scripts/psql.bash",
+    "seed": "./scripts/seed.bash"
+  }
+}

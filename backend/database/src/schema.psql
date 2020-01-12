@@ -1,0 +1,22 @@
+CREATE USER enfase;
+CREATE DATABASE enfase;
+GRANT ALL PRIVILEGES ON DATABASE enfase TO enfase;
+
+\connect enfase
+
+CREATE TABLE question(
+  id SERIAL NOT NULL PRIMARY KEY,
+  _text VARCHAR(2048) NOT NULL,
+  answer INTEGER NOT NULL
+);
+GRANT ALL PRIVILEGES ON question TO enfase;
+
+CREATE TABLE choice(
+  question_id INTEGER NOT NULL,
+  index INTEGER NOT NULL,
+  _text VARCHAR(1024) NOT NULL,
+  PRIMARY KEY(question_id, index)
+);
+GRANT ALL PRIVILEGES ON choice TO enfase;
+
+GRANT USAGE, SELECT ON ALL SEQUENCES IN SCHEMA public TO enfase;

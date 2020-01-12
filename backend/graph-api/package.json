@@ -1,5 +1,5 @@
 {
-  "name": "graph",
+  "name": "graph-api",
   "version": "0.0.0",
   "main": "src/index.js",
   "author": "Carlos Neves",
@@ -10,7 +10,8 @@
     "start": "./scripts/start.bash",
     "kill": "./scripts/kill.bash",
     "restart": "./scripts/restart.bash",
-    "logs": "./scripts/logs.bash"
+    "logs": "./scripts/logs.bash",
+    "shell": "./scripts/shell.bash"
   },
   "dependencies": {
     "body-parser-graphql": "^1.1.0",
