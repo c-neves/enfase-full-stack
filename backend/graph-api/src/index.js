@@ -11,7 +11,6 @@ const app = express()
 app.use(bodyParser.graphql())
 
 app.get('/', async (req, res) => {
-
   const _res = await database.query('SELECT * from choice')
   res.send(_res)
 })
