@@ -3,33 +3,17 @@ schema {
 }
 
 type Query {
-  todoList: TodoList
-
-  # Fetches an object given its ID
-  node(
-    # The ID of an object
-    id: ID!
-  ): Node
+  node(id: ID!): Node
+  questions(first: Int, after: String, last: Int, before: String): QuestionConnection
 }
 
 interface Node {
   id: ID!
 }
 
-type TodoList implements Node {
-  # The ID of an object
-  id: ID!
-  todos(status: String = "any", after: String, first: Int, before: String, last: Int): TodoConnection
-  totalCount: Int!
-  completedCount: Int!
-}
-
-# A connection to a list of items.
-type TodoConnection {
-  # Information to aid in pagination.
+type QuestionConnection {
   pageInfo: PageInfo!
-  # A list of edges.
-  edges: [TodoEdge]
+  edges: [QuestionEdge]
 }
 
 # Information about pagination in a connection.
@@ -44,16 +28,14 @@ type PageInfo {
   endCursor: String
 }
 
-# An edge in a connection.
-type TodoEdge {
-  # The item at the end of the edge
-  node: Todo
-  # A cursor for use in pagination
+type QuestionEdge {
   cursor: String!
+  node: Question
 }
 
-type Todo implements Node {
+type Question implements Node {
   id: ID!
   text: String!
-  complete: Boolean!
+  answer: Int!
+  choices: [String!]!
 }

@@ -1,0 +1,20 @@
+.DesktopLayout {
+  background: #f0f2f5;
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  overflow-y: auto;
+}
+
+.DesktopLayout-content {
+  background: #fff;
+  border-radius: 8px;
+  position: absolute;
+  top: 10vh;
+  left: 20vw;
+  right: 20vw;
+  margin-bottom: 10vh;
+  /* text-align: center; */
+}

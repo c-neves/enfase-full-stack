@@ -14,8 +14,12 @@ app.use(cors())
 app.use(bodyParser.graphql())
 
 app.get('/', async (req, res) => {
-  const _res = await database.query('SELECT * from choice')
-  res.send(_res)
+  const question = await database.query({
+    text: 'SELECT * FROM question WHERE id = $1',
+    values: [base64.decode('MQ==')]
+  })
+  console.log(question)
+  res.send(question)
 })
 
 app.post('/', async (req, res) => {

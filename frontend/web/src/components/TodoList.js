@@ -5,7 +5,11 @@ import Todo from './Todo'
 function TodoList({ todoList: { todos, totalCount, completedCount } }) {
   return (
     <section>
-      <input type='checkbox' checked={totalCount === completedCount} />
+      <input
+        type='checkbox'
+        checked={totalCount === completedCount}
+        onChange={() => {}}
+      />
       <ul>
         {todos.edges.map(edge => (
           <Todo

@@ -1,38 +1,22 @@
 import React from 'react'
-import { graphql, QueryRenderer } from 'react-relay'
-import TodoList from '../TodoList'
-import environment from '../../relay/environment'
-// import { Button } from 'antd'
-// <Button type="primary">Button</Button>
-// import './App.css'
+import { Router, Link } from '@reach/router'
+import QuestionList from '../QuestionList'
 
-function App() {
+const Create = () => <div>Create</div>
+const Edit = ({ questionId }) => <div>Edit #{questionId}</div>
+const Preview = ({ questionId }) => <div>Preview #{questionId}</div>
+const NotFound = ({ location }) => (
+  <div>Route <code>{location.pathname}</code> not found</div>
+)
+
+export default function App() {
   return (
-    <QueryRenderer
-      environment={environment}
-      query={graphql`
-        query AppQuery {
-          todoList {
-            id
-            ...TodoList_todoList
-          }
-        }
-      `}
-      variables={{}}
-      render={({ error, props }) => {
-        if (error) {
-          return <div>Error!</div>
-        } else if (!props) {
-          return <div>Loading...</div>
-        } else {
-          return <div>
-            <div>Todo list id: {props.todoList.id}</div>
-            <TodoList todoList={props.todoList} />
-          </div>
-        }
-      }}
-    />
+    <Router>
+      <QuestionList path='/' />
+      <Create path='/create' />
+      <Edit path='/edit/:questionId' />
+      <Preview path='/preview/:questionId' />
+      <NotFound default />
+    </Router>
   )
 }
-
-export default App
