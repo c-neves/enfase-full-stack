@@ -13,6 +13,7 @@
     "restart": "./scripts/restart.bash",
     "logs": "./scripts/logs.bash",
     "shell": "./scripts/shell.bash",
+    "relay": "node scripts/relay.js",
     "_build": "react-app-rewired build",
     "_test": "react-app-rewired test"
   },
@@ -21,14 +22,20 @@
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
     "antd": "^3.26.6",
+    "customize-cra": "^0.9.1",
     "react": "^16.12.0",
+    "react-app-rewired": "^2.1.5",
     "react-dom": "^16.12.0",
+    "react-relay": "^8.0.0",
     "react-scripts": "3.3.0"
   },
   "devDependencies": {
     "babel-plugin-import": "^1.13.0",
-    "customize-cra": "^0.9.1",
-    "react-app-rewired": "^2.1.5"
+    "babel-plugin-relay": "^8.0.0",
+    "chokidar": "^3.3.1",
+    "execa": "^4.0.0",
+    "graphql": "^14.5.8",
+    "relay-compiler": "^8.0.0"
   },
   "eslintConfig": {
     "extends": "react-app"

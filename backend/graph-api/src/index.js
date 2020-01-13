@@ -1,4 +1,5 @@
 const express = require('express')
+const cors = require('cors')
 const bodyParser = require('body-parser-graphql')
 const { graphql } = require('graphql')
 const { schema, root } = require('./graphql')
@@ -7,6 +8,8 @@ const database = require('./database')
 const port = 4000
 const host = '0.0.0.0'
 const app = express()
+
+app.use(cors())
 
 app.use(bodyParser.graphql())
 

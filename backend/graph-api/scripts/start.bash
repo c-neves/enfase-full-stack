@@ -12,8 +12,7 @@ container_name="$(echo "$package_name" | sed 's|/|_|g')"
 image='node:13.6.0-alpine3.11'
 
 # Get database env vars.
-backend_root=$(dirname "$package_root")
-source "$backend_root/database/scripts/env.bash"
+source "$repository_root/backend/database/scripts/env.bash"
 
 (echo; set -o xtrace
   docker run \

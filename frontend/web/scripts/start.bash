@@ -12,15 +12,14 @@ container_name="$(echo "$package_name" | sed 's|/|_|g')"
 image='node:13.6.0-alpine3.11'
 
 # TODO: get graph-api env vars.
-# backend_root=$(dirname "$package_root")
-# source "$backend_root/database/scripts/env.bash"
+source "$repository_root/backend/graph-api/scripts/env.bash"
 # Rename them for CRA.
-# export REACT_APP_GRAPH_API_ENDPOINT="http://$GRAPH_API_HOST:$GRAPH_API_PORT"
+export REACT_APP_GRAPH_API_ENDPOINT="http://$GRAPH_API_HOST:$GRAPH_API_PORT"
 
 (echo; set -o xtrace
   docker run \
     --name "$container_name" \
-    --volume "$package_root:/$package_name" \
+    --volume "$repository_root:/$repository_name" \
     --workdir "/$package_name" \
     --env REACT_APP_GRAPH_API_ENDPOINT \
     --publish 3000:3000 \
@@ -29,3 +28,6 @@ image='node:13.6.0-alpine3.11'
     --detach \
     "$image" \
     _start)
+
+(echo; set -o xtrace
+  docker exec --detach "$container_name" yarn relay)

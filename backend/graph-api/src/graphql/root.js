@@ -1,4 +1,15 @@
 module.exports = {
+  todoList() {
+    return {
+      id: 'foo',
+      todos: {
+        edges: [{ node: { id: 0, text: 'Learn relay.', complete: false } }]
+      },
+      totalCount: 0,
+      completedCount: 0
+    }
+  },
+
   foo: (...args) => {
     console.log(args)
     return 'bar'
