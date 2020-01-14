@@ -9,7 +9,7 @@ const ROMAN = 'ABCDEF'
 
 export default function QuestionForm({
   text: initialText,
-  awnswer: initialAnswer,
+  answer: initialAnswer,
   choices: initialChoices,
   onChange,
   onSubmit,

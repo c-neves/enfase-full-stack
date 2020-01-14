@@ -1,0 +1,11 @@
+.Edit-error {
+  margin: 1vw;
+}
+
+.Edit-loading {
+  background: #f0f2f5;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

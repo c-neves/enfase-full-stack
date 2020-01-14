@@ -31,8 +31,8 @@ export default function QuestionList() {
           return (
             <DesktopLayout>
               <div className='QuestionList-error'>
-                <h1>Error!</h1>
-                <pre>{(new Error('Error!')).stack}</pre>
+                <h1>{error.message}</h1>
+                <pre>{error.stack}</pre>
               </div>
             </DesktopLayout>
           )

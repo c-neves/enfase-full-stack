@@ -18,13 +18,24 @@ function getOptimisticResponse(question) {
   return { updateQuestion: { question } }
 }
 
-function commit(input) {
-  console.log('input', input)
+function commit(input, callback) {
   return commitMutation(environment, {
     mutation,
     variables: { input },
-    optimisticResponse: getOptimisticResponse(input)
+    optimisticResponse: getOptimisticResponse(input),
+    onCompleted: (response, errors) => {
+      if (errors instanceof Array && errors.length > 0) {
+        callback(errors[0])
+      } else {
+        callback(null)
+      }
+    }
   })
 }
 
-export default { commit }
+// Delay the mutation to simulate a more real-world scenario.
+function delayedCommit(...args) {
+  setTimeout(() => commit(...args), 1500)
+}
+
+export default { commit: delayedCommit }

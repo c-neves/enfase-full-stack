@@ -10,7 +10,6 @@ export default function Create() {
   const [loading, setLoading] = useState(false)
 
   function handleSubmit(question, resetForm) {
-    console.log(question)
     const { text, answer, choices } = question
 
     if (!text) {

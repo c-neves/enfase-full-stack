@@ -11,11 +11,11 @@ function QuestionListItem({
   function handleDeleteItem() {
     const hide = message.loading('Deleting question...')
     DeleteQuestionMutation.commit(id, error => {
+      hide()
       if (error) {
-        message.error(error.message)
+        message.error(error.message, 6)
       } else {
-        hide()
-        message.success('Question deleted')
+        message.success('Question deleted', 1)
       }
     })
   }
