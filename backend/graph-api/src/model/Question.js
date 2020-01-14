@@ -125,4 +125,29 @@ module.exports = class Question {
 
     return { pageInfo, edges }
   }
+
+  static async insert({ text, answer, choices }) {
+    let { rows } = await database.query({
+      text: 'INSERT INTO question (_text, answer) values ($1, $2) RETURNING *',
+      values: [text, answer]
+    })
+
+    const rawQuestionId = rows[0].id
+
+    await Promise.all(choices.map(
+      (choiceText, index) => database.query({
+        text: 'INSERT INTO choice (question_id, index, _text) values ($1, $2, $3)',
+        values: [rawQuestionId, index, choiceText]
+      })
+    ))
+
+    const question = {
+      id: base64.encode(rawQuestionId),
+      text,
+      answer,
+      choices
+    }
+
+    return question
+  }
 }

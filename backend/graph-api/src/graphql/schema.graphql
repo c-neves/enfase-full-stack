@@ -1,5 +1,6 @@
 schema {
   query: Query
+  mutation: Mutation
 }
 
 type Query {
@@ -38,4 +39,22 @@ type Question implements Node {
   text: String!
   answer: Int!
   choices: [String!]!
+}
+
+type Mutation {
+  createQuestion(input: CreateQuestionInput!): CreateQuestionPayload
+  # updateQuestion(input: UpdateQuestionInput!): UpdateQuestionPayload
+  # removeQuestion(input: RemoveQuestionInput!): RemoveQuestionPayload
+}
+
+input CreateQuestionInput {
+  text: String!
+  answer: Int!
+  choices: [String!]!
+  clientMutationId: String
+}
+
+type CreateQuestionPayload {
+  question: QuestionEdge!
+  clientMutationId: String
 }

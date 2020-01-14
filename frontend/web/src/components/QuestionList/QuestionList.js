@@ -1,6 +1,7 @@
 import React from 'react'
 import { graphql, QueryRenderer } from 'react-relay'
-import DesktopLayout from '../DesktopLayout'
+import { navigate } from '@reach/router'
+// import DesktopLayout from '../DesktopLayout'
 import QuestionListItem from './QuestionListItem'
 import environment from '../../relay/environment'
 
@@ -12,11 +13,7 @@ export default function QuestionList() {
         query QuestionListQuery {
           questions(
             first: 2147483646  # max GraphQLInt - 1, to fetch all questions
-          ) {
-            pageInfo {
-              hasNextPage
-              endCursor
-            }
+          ) @connection(key: "QuestionList_questions") {
             edges {
               node {
                 id
@@ -33,11 +30,15 @@ export default function QuestionList() {
         } else  if (!props) {
           return <div>Loading...</div>
         } else {
+          const { questions: { edges } } = props
           return (
             <div>
-              {props.questions.edges.map(({ node }) => (
-                <QuestionListItem key={node.id} question={node} />
-              ))}
+              <button onClick={() => navigate('/create')}>+</button>
+            {edges.length > 0 ? edges.map(({ node }) => (
+              <QuestionListItem key={node.id} question={node} />
+            )) : (
+              <div>No questions yet!</div>
+            )}
             </div>
           )
         }

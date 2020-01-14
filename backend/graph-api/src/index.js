@@ -3,7 +3,6 @@ const cors = require('cors')
 const bodyParser = require('body-parser-graphql')
 const { graphql } = require('graphql')
 const { schema, root } = require('./graphql')
-const database = require('./database')
 
 const port = 4000
 const host = '0.0.0.0'
@@ -13,23 +12,13 @@ app.use(cors())
 
 app.use(bodyParser.graphql())
 
-app.get('/', async (req, res) => {
-  const question = await database.query({
-    text: 'SELECT * FROM question WHERE id = $1',
-    values: [base64.decode('MQ==')]
-  })
-  console.log(question)
-  res.send(question)
-})
-
 app.post('/', async (req, res) => {
   try {
     const response = await graphql({
       schema,
       rootValue: root,
       source: req.body.query,
-      variableValues: req.body.variables,
-      contextValue: { database }
+      variableValues: req.body.variables
     })
 
     res.status(200).send(response)

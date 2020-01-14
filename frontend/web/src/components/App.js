@@ -1,8 +1,8 @@
 import React from 'react'
-import { Router, Link } from '@reach/router'
+import { Router } from '@reach/router'
 import QuestionList from './QuestionList'
+import Create from './Create'
 
-const Create = () => <div>Create</div>
 const Edit = ({ questionId }) => <div>Edit #{questionId}</div>
 const Preview = ({ questionId }) => <div>Preview #{questionId}</div>
 const NotFound = ({ location }) => (
