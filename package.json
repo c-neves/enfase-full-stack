@@ -5,6 +5,7 @@
   "license": "MIT",
   "private": false,
   "scripts": {
+    "_install": "./scripts/install.bash",
     "start": "./scripts/start.bash",
     "kill": "./scripts/kill.bash",
     "restart": "./scripts/restart.bash"

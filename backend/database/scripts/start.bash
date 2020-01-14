@@ -11,19 +11,21 @@ package_root="$repository_root/$PACKAGE_ID"
 container_name="$(echo "$package_name" | sed 's|/|_|g')"
 image='postgres:12.1-alpine'
 
+export POSTGRES_PASSWORD='123456'
 (echo; set -o xtrace
   docker run \
     --name "$container_name" \
-    --env POSTGRES_PASSWORD=123456 \
+    --env POSTGRES_PASSWORD \
     --workdir "/$package_name" \
     --rm \
     --detach \
     "$image")
 
 # Wait until database is up.
-until docker exec "$container_name" pg_isready; do
-  sleep 0.1s
-done
+(echo; set -o xtrace
+  until docker exec "$container_name" pg_isready; do
+    sleep 0.1s
+  done)
 
 (echo; set -o xtrace
   cd "$package_root"

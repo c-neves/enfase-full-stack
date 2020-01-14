@@ -9,6 +9,6 @@ _package_name="$_repository_name/$PACKAGE_ID"
 _container_name="$(echo "$_package_name" | sed 's|/|_|g')"
 
 # Export database info.
-ip=$(docker inspect --format '{{ .NetworkSettings.IPAddress }}' "$_container_name" || printf '')
+ip=$(docker inspect --format '{{ .NetworkSettings.IPAddress }}' "$_container_name" || printf 'localhost')
 export GRAPH_API_HOST="$ip"
 export GRAPH_API_PORT='4000'

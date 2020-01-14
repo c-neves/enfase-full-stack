@@ -3,7 +3,6 @@ import { graphql, QueryRenderer } from 'react-relay'
 import { Spin, Icon } from 'antd'
 import { navigate } from '@reach/router'
 import DesktopLayout from '../DesktopLayout'
-import ReturnArrow from '../ReturnArrow'
 import QuestionListItem from './QuestionListItem'
 import environment from '../../relay/environment'
 import './QuestionList.css'
@@ -31,7 +30,6 @@ export default function QuestionList() {
         if (error) {
           return (
             <DesktopLayout>
-              <ReturnArrow />
               <div className='QuestionList-error'>
                 <h1>{error.message}</h1>
                 <pre>{error.stack}</pre>

@@ -1,6 +1,5 @@
 .QuestionListItem-li {
   font-size: 1.7em;
-  padding: .4vw;
   border: 1px solid #fafafa;
   cursor: pointer;
   display: grid;
@@ -23,8 +22,10 @@
 }
 
 .QuestionListItem-text {
+  padding: 1vw;
+  padding-left: 2vw;
   text-overflow: ellipsis;
-  /* Required for text-overflow to do anything */
+  /* Required for text-overflow to do anything. */
   white-space: nowrap;
   overflow: hidden;
 }
@@ -41,9 +42,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-right: 1vw;
 }
 
 .QuestionListItem-actions svg {
-  margin: .2vw;
+  margin: .5vw;
   cursor: pointer;
 }
