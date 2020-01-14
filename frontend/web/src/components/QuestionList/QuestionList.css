@@ -1,0 +1,54 @@
+.QuestionList-error {
+  margin: 1vw;
+}
+
+.QuestionList-loading {
+  background: #f0f2f5;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.QuestionList-create-button {
+  position: fixed;
+  right: 6vw;
+  bottom: 6vw;
+  width: 5vw;
+  height: 5vw;
+  border-radius: 50%;
+  border: none;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px !important;
+  background: #fff;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.QuestionList-create-button:active {
+  outline: none;
+}
+
+.QuestionList-create-button svg {
+  font-size: 3em;
+  color: #777;
+}
+
+.QuestionList-ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.QuestionList-empty-list {
+  height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.QuestionList-empty-list h2 {
+  color: #aaa;
+}

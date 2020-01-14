@@ -1,0 +1,49 @@
+.QuestionListItem-li {
+  font-size: 1.7em;
+  padding: .4vw;
+  border: 1px solid #fafafa;
+  cursor: pointer;
+  display: grid;
+  grid-template-columns: 1fr auto;
+}
+
+.QuestionListItem-li:first-of-type {
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+.QuestionListItem-li:last-of-type {
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+
+.QuestionListItem-li:hover {
+  border-color: #f8f8f8;
+  background: #f8f8f8;
+}
+
+.QuestionListItem-text {
+  text-overflow: ellipsis;
+  /* Required for text-overflow to do anything */
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.QuestionListItem-li .QuestionListItem-actions {
+  display: none;
+}
+
+.QuestionListItem-li:hover .QuestionListItem-actions {
+  display: flex;
+}
+
+.QuestionListItem-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.QuestionListItem-actions svg {
+  margin: .2vw;
+  cursor: pointer;
+}

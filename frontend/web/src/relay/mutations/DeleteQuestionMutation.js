@@ -10,7 +10,7 @@ const mutation = graphql`
   }
 `
 
-function commit(questionId) {
+function commit(questionId, callback) {
   const input = {
     id: questionId
   }
@@ -25,8 +25,20 @@ function commit(questionId) {
     },
     optimisticUpdater: store => {
       store.delete(questionId)
+    },
+    onCompleted: (response, errors) => {
+      if (errors instanceof Array && errors.length > 0) {
+        callback(errors[0])
+      } else {
+        callback(null)
+      }
     }
   })
 }
 
-export default { commit }
+// Delay the mutation to simulate a more real-world scenario.
+function delayedCommit(...args) {
+  setTimeout(() => commit(...args), 1500)
+}
+
+export default { commit: delayedCommit }

@@ -42,4 +42,9 @@ function commit({ text, answer, choices }, callback) {
   })
 }
 
-export default { commit }
+// Delay the mutation to simulate a more real-world scenario.
+function delayedCommit(...args) {
+  setTimeout(() => commit(...args), 1500)
+}
+
+export default { commit: delayedCommit }

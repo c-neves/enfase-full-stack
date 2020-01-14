@@ -22,20 +22,18 @@ export default function Create() {
     } else {
       setLoading(true)
       setError(null)
-      setTimeout(() => (
-        CreateQuestionMutation.commit(
-          question,
-          error => {
-            if (error) {
-              setError(error)
-            } else {
-              resetForm()
-              message.success('Question created')
-            }
-            setLoading(false)
+      CreateQuestionMutation.commit(
+        question,
+        error => {
+          if (error) {
+            setError(error)
+          } else {
+            resetForm()
+            message.success('Question created')
           }
-        )
-      ), 1500)
+          setLoading(false)
+        }
+      )
     }
   }
 

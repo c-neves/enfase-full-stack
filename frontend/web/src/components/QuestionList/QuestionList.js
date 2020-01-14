@@ -1,10 +1,11 @@
 import React from 'react'
 import { graphql, QueryRenderer } from 'react-relay'
-import { Icon } from 'antd'
+import { Spin, Icon } from 'antd'
 import { navigate } from '@reach/router'
-// import DesktopLayout from '../DesktopLayout'
+import DesktopLayout from '../DesktopLayout'
 import QuestionListItem from './QuestionListItem'
 import environment from '../../relay/environment'
+import './QuestionList.css'
 
 export default function QuestionList() {
   return (
@@ -25,27 +26,39 @@ export default function QuestionList() {
         }
       `}
       variables={{}}
-      render={({error, props}) => {
+      render={({ error, props }) => {
         if (error) {
-          return <div>Error!</div>
+          return (
+            <DesktopLayout>
+              <div className='QuestionList-error'>
+                <h1>Error!</h1>
+                <pre>{(new Error('Error!')).stack}</pre>
+              </div>
+            </DesktopLayout>
+          )
         } else  if (!props) {
-          return <div>Loading...</div>
+          return <div className='QuestionList-loading'><Spin /></div>
         } else {
           const { questions: { edges } } = props
           const nodes = edges.map(({ node }) => node).filter(Boolean)
           return (
-            <div>
-              <button onClick={() => navigate('/create')}>
+            <DesktopLayout>
+              <button
+                className='QuestionList-create-button'
+                onClick={() => navigate('/create')}
+              >
                 <Icon type='plus' />
               </button>
-              <ul>
+              <ul className='QuestionList-ul'>
                 {nodes.length > 0 ? nodes.map(node => (
                   <QuestionListItem key={node.id} question={node} />
                 )) : (
-                  <div>No questions yet!</div>
+                  <div className='QuestionList-empty-list'>
+                    <h2>No questions yet!</h2>
+                  </div>
                 )}
               </ul>
-            </div>
+            </DesktopLayout>
           )
         }
       }}
