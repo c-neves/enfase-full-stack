@@ -1,0 +1,8 @@
+.ReturnArrow {
+  position: fixed;
+  left: 2vw;
+  top: 2vw;
+  font-size: 2.3em;
+  stroke-width: 900;
+  cursor: pointer;
+}

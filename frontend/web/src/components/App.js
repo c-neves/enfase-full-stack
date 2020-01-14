@@ -2,8 +2,8 @@ import React from 'react'
 import { Router } from '@reach/router'
 import QuestionList from './QuestionList'
 import Create from './Create'
+import Edit from './Edit'
 
-const Edit = ({ questionId }) => <div>Edit #{questionId}</div>
 const Preview = ({ questionId }) => <div>Preview #{questionId}</div>
 const NotFound = ({ location }) => (
   <div>Route <code>{location.pathname}</code> not found</div>

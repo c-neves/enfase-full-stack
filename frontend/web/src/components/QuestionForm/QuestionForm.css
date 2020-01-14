@@ -1,0 +1,10 @@
+.QuestionForm-field {
+  display: grid;
+  grid-template-columns: 21% auto;
+  margin: 2vh 2vw;
+}
+
+.QuestionForm-label {
+  margin-right: .8vw;
+  text-align: right;
+}

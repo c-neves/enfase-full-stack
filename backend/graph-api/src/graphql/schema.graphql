@@ -44,7 +44,7 @@ type Question implements Node {
 type Mutation {
   createQuestion(input: CreateQuestionInput!): CreateQuestionPayload
   deleteQuestion(input: DeleteQuestionInput!): DeleteQuestionPayload
-  # updateQuestion(input: UpdateQuestionInput!): UpdateQuestionPayload
+  updateQuestion(input: UpdateQuestionInput!): UpdateQuestionPayload
 }
 
 input CreateQuestionInput {
@@ -66,5 +66,17 @@ input DeleteQuestionInput {
 
 type DeleteQuestionPayload {
   id: ID!
+  clientMutationId: String
+}
+
+input UpdateQuestionInput {
+  id: ID!
+  text: String!
+  answer: Int!
+  choices: [String!]!
+  clientMutationId: String
+}
+type UpdateQuestionPayload {
+  question: Question!
   clientMutationId: String
 }

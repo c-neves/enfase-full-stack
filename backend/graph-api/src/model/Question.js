@@ -164,4 +164,27 @@ module.exports = class Question {
       values: [rawId]
     })
   }
+
+  static async update({ id, text, answer, choices }) {
+    const rawId = base64.decode(id)
+
+    await database.query({
+      text: 'UPDATE question SET _text = $1, answer = $2 WHERE id = $3',
+      values: [text, answer, rawId]
+    })
+
+    await database.query({
+      text: 'DELETE FROM choice WHERE question_id = $1',
+      values: [rawId]
+    })
+
+    await Promise.all(choices.map(
+      (choiceText, index) => database.query({
+        text: 'INSERT INTO choice (question_id, index, _text) values ($1, $2, $3)',
+        values: [rawId, index, choiceText]
+      })
+    ))
+
+    return { id, text, answer, choices }
+  }
 }

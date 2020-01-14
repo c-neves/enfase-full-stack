@@ -32,7 +32,13 @@ function commit({ text, answer, choices }, callback) {
   return commitMutation(environment, {
     mutation,
     variables: { input },
-    updater: callback // Call callback when mutation is done.
+    onCompleted: (response, errors) => {
+      if (errors instanceof Array && errors.length > 0) {
+        callback(errors[0])
+      } else {
+        callback(null)
+      }
+    }
   })
 }
 

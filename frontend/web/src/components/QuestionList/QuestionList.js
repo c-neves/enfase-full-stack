@@ -1,5 +1,6 @@
 import React from 'react'
 import { graphql, QueryRenderer } from 'react-relay'
+import { Icon } from 'antd'
 import { navigate } from '@reach/router'
 // import DesktopLayout from '../DesktopLayout'
 import QuestionListItem from './QuestionListItem'
@@ -34,12 +35,16 @@ export default function QuestionList() {
           const nodes = edges.map(({ node }) => node).filter(Boolean)
           return (
             <div>
-              <button onClick={() => navigate('/create')}>+</button>
-            {nodes.length > 0 ? nodes.map(node => (
-                <QuestionListItem key={node.id} question={node} />
-              )) : (
-                <div>No questions yet!</div>
-              )}
+              <button onClick={() => navigate('/create')}>
+                <Icon type='plus' />
+              </button>
+              <ul>
+                {nodes.length > 0 ? nodes.map(node => (
+                  <QuestionListItem key={node.id} question={node} />
+                )) : (
+                  <div>No questions yet!</div>
+                )}
+              </ul>
             </div>
           )
         }
