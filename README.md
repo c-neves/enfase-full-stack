@@ -1,5 +1,17 @@
 # enfase-full-stack
 
+## `notes`
+
+I used `PostgreSQL` for the database.
+
+I used `node`, `express`, `graphql` and `pg` for the backend GraphQL api.
+
+I used `react`, `relay` and `antd` for the web frontend (bootstraped with `create-react-app`).
+
+For each relay mutation I added a 1.5s delay to make the application seem more real.
+
+I implemented `QuestionConnection` in the GraphQL schema and server, but I did not implement pagination with relay in the frontend.
+
 ## `externalDependencies`
 
 - `yarn` (**optional**)
