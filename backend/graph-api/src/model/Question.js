@@ -150,4 +150,18 @@ module.exports = class Question {
 
     return question
   }
+
+  static async delete(id) {
+    const rawId = base64.decode(id)
+
+    await database.query({
+      text: 'DELETE FROM choice WHERE question_id = $1',
+      values: [rawId]
+    })
+
+    await database.query({
+      text: 'DELETE FROM question WHERE id = $1',
+      values: [rawId]
+    })
+  }
 }

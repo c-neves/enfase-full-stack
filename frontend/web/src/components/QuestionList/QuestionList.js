@@ -31,14 +31,15 @@ export default function QuestionList() {
           return <div>Loading...</div>
         } else {
           const { questions: { edges } } = props
+          const nodes = edges.map(({ node }) => node).filter(Boolean)
           return (
             <div>
               <button onClick={() => navigate('/create')}>+</button>
-            {edges.length > 0 ? edges.map(({ node }) => (
-              <QuestionListItem key={node.id} question={node} />
-            )) : (
-              <div>No questions yet!</div>
-            )}
+            {nodes.length > 0 ? nodes.map(node => (
+                <QuestionListItem key={node.id} question={node} />
+              )) : (
+                <div>No questions yet!</div>
+              )}
             </div>
           )
         }

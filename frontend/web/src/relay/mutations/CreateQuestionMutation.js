@@ -21,7 +21,7 @@ const mutation = graphql`
 
 let tempId = 0
 
-function commit({ text, answer, choices }) {
+function commit({ text, answer, choices }, callback) {
   const input = {
     text,
     answer,
@@ -31,7 +31,8 @@ function commit({ text, answer, choices }) {
 
   return commitMutation(environment, {
     mutation,
-    variables: { input }
+    variables: { input },
+    updater: callback // Call callback when mutation is done.
   })
 }
 

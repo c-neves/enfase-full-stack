@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { navigate } from '@reach/router'
 import CreateQuestionMutation from '../relay/mutations/CreateQuestionMutation'
 
 const ROMAN = 'ABCDEF'
@@ -41,8 +42,14 @@ export default function Create() {
     } else if (hasDuplicates(choices)) {
       console.error('Some choices are duplicates.')
     } else {
-      CreateQuestionMutation.commit({ text, answer, choices })
+      CreateQuestionMutation.commit({ text, answer, choices }, resetForm)
     }
+  }
+
+  function resetForm() {
+    setText('')
+    setAnswer(0)
+    setChoices(['', ''])
   }
 
   return (

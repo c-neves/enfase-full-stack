@@ -1,11 +1,14 @@
 import React from 'react'
 import { graphql, createFragmentContainer } from 'react-relay'
+import DeleteQuestionMutation from '../../relay/mutations/DeleteQuestionMutation'
 
 function QuestionListItem({
   question: { id, text, anwser, choices }
 }) {
   return (
-    <li>{text}</li>
+    <li onClick={() => DeleteQuestionMutation.commit(id)}>
+      {text}
+    </li>
   )
 }
 
