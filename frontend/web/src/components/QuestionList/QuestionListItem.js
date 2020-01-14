@@ -22,10 +22,18 @@ function QuestionListItem({
 
   return (
     <li className='QuestionListItem-li'>
-      <div className='QuestionListItem-text'>{text}</div>
+      <div
+        className='QuestionListItem-text'
+        onClick={() => navigate(`/preview/${id}`)}
+      >
+        {text}
+      </div>
       <div className='QuestionListItem-actions'>
           <Tooltip placement='bottom' title='Preview'>
-            <Icon type='eye' />
+            <Icon
+              type='eye'
+              onClick={() => navigate(`/preview/${id}`)}
+            />
           </Tooltip>
           <Tooltip placement='bottom' title='Edit'>
             <Icon

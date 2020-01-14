@@ -3,8 +3,8 @@ import { Router } from '@reach/router'
 import QuestionList from './QuestionList'
 import Create from './Create'
 import Edit from './Edit'
+import Preview from './Preview'
 
-const Preview = ({ questionId }) => <div>Preview #{questionId}</div>
 const NotFound = ({ location }) => (
   <div>Route <code>{location.pathname}</code> not found</div>
 )

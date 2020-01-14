@@ -1,0 +1,28 @@
+.Preview-error {
+  margin: 1vw;
+}
+
+.Preview-loading {
+  background: #f0f2f5;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.QuestionPreview {
+  margin: 1.6vw;
+  overflow-wrap: break-word;
+}
+
+.QuestionPreview-field {
+  margin: 1vw;
+}
+
+.QuestionPreview-field button {
+  width: 100%;
+}
+
+.QuestionPreview-answer {
+  text-align: center;
+}

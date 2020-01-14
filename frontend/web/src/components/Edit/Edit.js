@@ -31,6 +31,7 @@ export default function Edit({ questionId }) {
         if (error) {
           return (
             <DesktopLayout>
+              <ReturnArrow />
               <div className='Edit-error'>
                 <h1>{error.message}</h1>
                 <pre>{error.stack}</pre>
@@ -38,7 +39,12 @@ export default function Edit({ questionId }) {
             </DesktopLayout>
           )
         } else  if (!props) {
-          return <div className='Edit-loading'><Spin /></div>
+          return (
+            <div className='Preview-loading'>
+              <ReturnArrow />
+              <Spin />
+            </div>
+          )
         } else {
           return <EditForm {...props} />
         }
