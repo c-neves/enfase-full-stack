@@ -1,6 +1,6 @@
 import React from 'react'
 import { Router, Link } from '@reach/router'
-import QuestionList from '../QuestionList'
+import QuestionList from './QuestionList'
 
 const Create = () => <div>Create</div>
 const Edit = ({ questionId }) => <div>Edit #{questionId}</div>

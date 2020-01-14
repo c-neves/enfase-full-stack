@@ -1,7 +1,24 @@
 import React from 'react'
+import { graphql, createFragmentContainer } from 'react-relay'
 
-export default function QuestionListItem({ id, text, choices }) {
-  return questions.map(question => (
-    
-  ))
+function QuestionListItem({
+  question: { id, text, anwser, choices }
+}) {
+  return (
+    <li>{text}</li>
+  )
 }
+
+export default createFragmentContainer(
+  QuestionListItem,
+  {
+    question: graphql`
+      fragment QuestionListItem_question on Question {
+        id
+        text
+        answer
+        choices
+      }
+    `
+  }
+)

@@ -29,5 +29,7 @@ export REACT_APP_GRAPH_API_ENDPOINT="http://$GRAPH_API_HOST:$GRAPH_API_PORT"
     "$image" \
     _start)
 
+# Make sure to exec with host user so generated files belong to host user.
+user="$(id -u):$(id -g)"
 (echo; set -o xtrace
-  docker exec --detach "$container_name" yarn relay)
+  docker exec --user "$user" --detach "$container_name" yarn relay)
