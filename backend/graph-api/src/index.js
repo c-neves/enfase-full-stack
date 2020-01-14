@@ -1,6 +1,7 @@
 const express = require('express')
 const cors = require('cors')
 const bodyParser = require('body-parser-graphql')
+const fs = require('fs')
 const { graphql } = require('graphql')
 const { schema, root } = require('./graphql')
 
@@ -11,6 +12,10 @@ const app = express()
 app.use(cors())
 
 app.use(bodyParser.graphql())
+
+app.get('/', (req, res) => res.send(
+  fs.readFileSync(`${__dirname}/static/graphiql.html`, 'utf8')
+))
 
 app.post('/', async (req, res) => {
   try {

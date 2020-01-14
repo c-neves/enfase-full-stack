@@ -12,7 +12,9 @@ Install dependencies from `package.json` using `yarn`.
 
 Runs the express app in watch mode. It will be available at `http://localhost:4000`.
 
-The only route available is `POST /`. Here the server may accept a request with `Content-Type: application/graphql` or `Content-Type: application/json`. The server only speaks GraphQL. Check the schema at `src/graphql/schema.graphql`.
+The GraphQL server answers at `POST /`. Check the schema at `src/graphql/schema.graphql`.
+
+At [`http://localhost:4000`](http://localhost:4000) you can access a GraphiQL client.
 
 ### `yarn kill` or `./scripts/kill.bash`
 
